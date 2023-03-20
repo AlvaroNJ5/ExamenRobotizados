@@ -17,29 +17,18 @@ def matriz_algoritmo(fi, d, a, alfa):
 #Crea las matrices e introducelas a solucion#
 #############################################
       
-
-fi1 = sp.Symbol('fi1')
 l1 = sp.Symbol('l1')
-d2 = sp.Symbol('d2')
-d3 = sp.Symbol('d3')
 l2 = sp.Symbol('l2')
-d4 = sp.Symbol('d4')
-fi5 = sp.Symbol('fi5')
+a = sp.Symbol('a')
 l3 = sp.Symbol('l3')
 l4 = sp.Symbol('l4')
-fi6 = sp.Symbol('fi6')
-
-m1 = matriz_algoritmo(np.pi/2+np.pi/2,l1,0,np.pi/2)
-
-m2 = matriz_algoritmo(np.pi/2,0,0,-np.pi/2)
-m3 = matriz_algoritmo(np.pi/2,-1,l2,-np.pi/2)
-m4 = matriz_algoritmo(0,1,0,-np.pi/2)
-m5 = matriz_algoritmo(-np.pi/2-np.pi/2,l3,0,-np.pi/2)
-m6 = matriz_algoritmo(0,l4,0,0)
-Solucion = mm.multiplica_por_la_derecha(4, m1,m2,m3,m4,m5,m6)
-print(Solucion)
-
-
+l5 = sp.Symbol('l5')
+m1 = matriz_algoritmo(3*sp.pi/2, l1+l2, -a, -sp.pi/2)
+m2 = matriz_algoritmo(0, 0, -l3, sp.pi)
+m3 = matriz_algoritmo(0, 0, l4, sp.pi)
+m4 = matriz_algoritmo(-sp.pi/2, 0, 0, -sp.pi/2)
+m6 = matriz_algoritmo(sp.pi/2, -l5, 0, sp.pi) 
+sp.pprint(mm.multiplica_por_la_derecha(4,m1,m2,m3,m4,m6))
 
 
 

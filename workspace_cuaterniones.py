@@ -2,10 +2,12 @@ import pyquaternion as pq
 import numpy as np
 import sympy as sp
 import simbolicquaternions as sq
+import funciones_basicas as fb
 #######Notas
 '''
 https://kieranwynn.github.io/pyquaternion/#welcome
 
+pq.Quaternion(scalar=1.0, vector=(3.0, 0.0, 0.0)) -> declara por parametros
 https://www.tutorialspoint.com/sympy/sympy_quaternion.htm
 
 
@@ -23,16 +25,3 @@ https://www.tutorialspoint.com/sympy/sympy_quaternion.htm
     vector = sp.Quaternion(0, 5, 2, -6)   #OJO. No es realmente un cuaternio. Hay que definirlo de esta manera.
     solucion = q1.mul(vector).mul(q1conj)
 '''
-
-q1 = pq.Quaternion(axis=[3,-2,1], angle=np.pi/2)
-r_prim = q1.rotate([5,2,-6])
-
-
-
-
-
-
-
-
-
-
