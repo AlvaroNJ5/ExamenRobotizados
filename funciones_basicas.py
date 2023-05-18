@@ -39,7 +39,7 @@ def matriz_a_cuaternio(matriz):
     if matriz[4]>=matriz[1]:
         q3 = ((-matriz[0]-matriz[5]+matriz[10]+1)**(1/2))/2
     else:
-        q3 = ((-matriz[0]-matriz[5]+matriz[10]+1)**(1/2))/2
+        q3 = -((-matriz[0]-matriz[5]+matriz[10]+1)**(1/2))/2
     return sp.Quaternion(q0,q1,q2,q3)
 
 def cuaternio_a_matriz_rot(cuaternio):
@@ -59,3 +59,18 @@ def cuaternio_a_matriz_rot(cuaternio):
     a22 = -q1**2-q2**2+1/2
     return simplifica_matriz(sp.Matrix([[2*a00,2*a01,2*a02],[2*a10,2*a11,2*a12],[2*a20,2*a21,2*a22]]))
     
+def extrae_matriz_rotacion(matriz):
+    'Extrae una matriz de rotación de una MTH.'
+    msalida = sp.eye(3)
+    aux = 0
+    for i in range(len(matriz)):
+        if i==3 or i==7 or i>=11:
+            continue
+        msalida[aux]=matriz[i]
+        aux+=1
+    return msalida
+
+def print_matriz_trozos(matriz):
+    for i in range(len(matriz)):
+        print(matriz[i])
+        print('\n')

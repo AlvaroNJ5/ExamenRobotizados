@@ -3,6 +3,7 @@ import numpy as np
 import sympy as sp
 import simbolicquaternions as sq
 import funciones_basicas as fb
+import Multiplica_matrices as mm
 #######Notas
 '''
 https://kieranwynn.github.io/pyquaternion/#welcome
@@ -25,3 +26,6 @@ https://www.tutorialspoint.com/sympy/sympy_quaternion.htm
     vector = sp.Quaternion(0, 5, 2, -6)   #OJO. No es realmente un cuaternio. Hay que definirlo de esta manera.
     solucion = q1.mul(vector).mul(q1conj)
 '''
+q1 = sp.Quaternion(0.225, -0.2812, -0.9289, -0.086)
+m1 = fb.cuaternio_a_matriz_rot(q1)
+sp.pprint(m1)

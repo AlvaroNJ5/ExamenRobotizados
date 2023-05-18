@@ -20,12 +20,23 @@ o1 = sp.Matrix([o1[0],o1[1],o1[2]])
 a1 = n1.cross(o1)
 '''
 
-q1 = sp.Quaternion(0.91085, 0.06403, -0.37728, -0.15459)
-m1 = fb.cuaternio_a_matriz_rot(q1)
-sp.pprint(m1)
-print(f'\n\n\n')
-angulo = [np.pi/2+np.pi/6,np.pi/2-np.pi/6, -np.pi/2+np.pi/6, -np.pi/2-np.pi/6]
-for ang in angulo:
-    sp.pprint(cm.mth_x(ang,0,0,0))
-    print('----------------------------')
+phi1, phi2, phi3, phi4,l1,l2,l3 = sp.symbols('phi_1 phi_2 phi_3 phi_4 l1 l2 l3')
+alpha1, alpha2, alpha3 = sp.symbols('alpha_1 alpha_2 alpha_3')
+omega1, omega2, omega3 = sp.symbols('omega_1 omega_2 omega_3')
 
+m1 = sp.Matrix([[-0.7405, 0.5611, -0.3696, 1062.88],
+                [0.4837, 0.8271, 0.2869, 656.154],
+                [0.4664, 0.0332, -0.8839, 275.605],
+                [0,0,0,1]])
+sol = m1*sp.Matrix([0,0,-85,1])
+
+m2 = cm.mth_z(phi1,0,0,0)
+m3 = cm.mth_y(0,0,1,0)
+m4 = cm.mth_z(-phi3,0,0,0)
+m5 = cm.mth_y(0,0.5,0,0)
+m6 = cm.mth_z(phi4,0,0,0)
+m7 = cm.mth_y(0,0.5,0,0)
+sol = mm.multiplica_por_la_derecha(4,m2,m3,m4,m5,m6,m7)
+sp.pprint(sp.simplify(sol))
+a = sp.solve([sp.sin(phi1)+0.5*sp.sin(-phi3)-1.166, sp.cos(phi1)-0.5*sp.cos(-phi3)-0.7], [phi1,phi3])
+print(a)
